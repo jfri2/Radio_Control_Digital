@@ -1,0 +1,111 @@
+
+Digital Channel Select.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000aa  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .comment      00000030  00000000  00000000  000000fe  2**0
+                  CONTENTS, READONLY
+  2 .debug_aranges 00000038  00000000  00000000  0000012e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_info   00000204  00000000  00000000  00000166  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_abbrev 0000016a  00000000  00000000  0000036a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_line   000001b4  00000000  00000000  000004d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_frame  0000005c  00000000  00000000  00000688  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_str    00000222  00000000  00000000  000006e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_loc    00000098  00000000  00000000  00000906  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_ranges 00000028  00000000  00000000  0000099e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ea ea       	ldi	r30, 0xAA	; 170
+  7c:	f0 e0       	ldi	r31, 0x00	; 0
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 30       	cpi	r26, 0x00	; 0
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 50 00 	call	0xa0	; 0xa0 <main>
+  8e:	0c 94 53 00 	jmp	0xa6	; 0xa6 <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <spi_master_init>:
+    }
+}
+
+void spi_master_init(void)
+{
+	DDRB = (1 << MOSI)|(1 << SCK)|(1 << LDAC);		//sets mosi, sck, and ldac bits as outputs	
+  96:	89 e2       	ldi	r24, 0x29	; 41
+  98:	84 b9       	out	0x04, r24	; 4
+	SPCR = (1 << SPE)|(1 << MSTR)|(1 << SPR1);		//enable spi, set as master. Prescalar = clk/16 (16 MHz clk -> 250 KHz)
+  9a:	82 e5       	ldi	r24, 0x52	; 82
+  9c:	8c bd       	out	0x2c, r24	; 44
+  9e:	08 95       	ret
+
+000000a0 <main>:
+
+
+
+int main(void)
+{
+	spi_master_init();			//init spi
+  a0:	0e 94 4b 00 	call	0x96	; 0x96 <spi_master_init>
+  a4:	ff cf       	rjmp	.-2      	; 0xa4 <main+0x4>
+
+000000a6 <_exit>:
+  a6:	f8 94       	cli
+
+000000a8 <__stop_program>:
+  a8:	ff cf       	rjmp	.-2      	; 0xa8 <__stop_program>

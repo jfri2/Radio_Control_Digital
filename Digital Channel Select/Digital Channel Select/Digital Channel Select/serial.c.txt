@@ -1,14 +1,11 @@
 /*******************************
 
-	ECET 17900 - Introduction to Digital Systems
+
 
 	Serial functions required to utilize STDIO with the Atmel microcontrollers through WinAVR
 
-	Name:	Jeffrey J. Richardson
-	Date:	October 29, 2011
+	Name:	John Fritz
 
-	Description:
-		(fill this in)
 
 
 
